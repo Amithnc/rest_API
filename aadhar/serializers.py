@@ -5,7 +5,7 @@ class aadhar_modelSerializer(serializers.Serializer):
     aadhar_number=serializers.CharField(help_text="enter aadhar number",max_length=13,default='')
     name=serializers.CharField(help_text="ENTER name",max_length=40,default='')
     age=serializers.CharField(help_text="enter age",max_length=3,default='')
-
+    phone_number=serializers.CharField(help_text="enter phone number",max_length=10,default=" ")
     def create(self, validated_data):
         """
         Create and return a new `Snippet` instance, given the validated data.
