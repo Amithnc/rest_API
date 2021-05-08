@@ -11,11 +11,8 @@ from django.http import JsonResponse
 
 @api_view(['GET', 'POST'])
 def homepage(request,aadhar_number):
-    """
-    List all code snippets, or create a new snippet.
-    """
+
     if request.method == 'GET':
-        print(aadhar_number)
         aadhar_data = aadhar_model.objects.filter(aadhar_number=aadhar_number)
         serializer = aadhar_modelSerializer(aadhar_data, many=True)
         return JsonResponse(serializer.data,safe=False)
