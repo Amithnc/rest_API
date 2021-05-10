@@ -10,12 +10,17 @@ from django.http import JsonResponse
 
 
 @api_view(['GET', 'POST'])
-def homepage(request,aadhar_number):
+def homepage(request,number):
 
     if request.method == 'GET':
-        aadhar_data = aadhar_model.objects.filter(aadhar_number=aadhar_number)
-        serializer = aadhar_modelSerializer(aadhar_data, many=True)
-        return JsonResponse(serializer.data,safe=False)
+        aadhar_data = aadhar_model.objects.filter(aadhar_number=number)
+        if aadhar_data:
+            serializer = aadhar_modelSerializer(aadhar_data, many=True)
+            return JsonResponse(serializer.data,safe=False)
+        else:
+            voter_data=aadhar_model.objects.filter(voter_id=number)    
+            serializer = aadhar_modelSerializer(voter_data, many=True)
+            return JsonResponse(serializer.data,safe=False)
 
     # elif request.method == 'POST':
     #     serializer = SnippetSerializer(data=request.data)
