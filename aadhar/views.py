@@ -81,7 +81,7 @@ def add_detais(request):
                 return redirect('/add-deatils/')
             if flag :
                 aadhar_obj=aadhar_model.objects.filter(aadhar_number=aadhar)
-                print(aadhar_obj)
+                # print(aadhar_obj)
                 if len(aadhar_obj) != 0:
                     pdf.objects.filter(pdf_file=str(details.pdf_file)).delete()  
                     messages.warning(request, 'Data already present in the database..')

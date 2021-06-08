@@ -41,13 +41,18 @@
                             <p id="card-text">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" style="background-color:#ecf0f3;">
-                                    <form method="POST" action="/add-deatils/" enctype="multipart/form-data" >
+                                    <form method="POST" action="/add-deatils/" enctype="multipart/form-data" onsubmit="display();" >
                                     {%csrf_token%}
                                     {{ form.as_p }}
-                                    <button type="submit" class="btn btn-success"
+                                    <button type="submit" class="btn btn-success" id="submit_btn"
                                     data-mdb-ripple-color="#ffffff" name="option" value="child" >Submit<i
                                         class="fas fa-baby fa-2x"></i></button>
                                     </form>    
+                                    <div id="spinner" style="display:none;">
+                                        Extracting Please Wait 
+                                        <div class="spinner-border text-primary" role="status"><span class="visually-hidden"></span>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                             </p>
@@ -70,6 +75,10 @@
         }
 </style>   
 <script>
+    function display(){
+        document.getElementById("submit_btn").style.display = "none"
+        document.getElementById("spinner").style.display = "block"
+    }    
     setTimeout(function () {
         $('#alert').alert('close');
     }, 8000);
