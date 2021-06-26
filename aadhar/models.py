@@ -7,6 +7,7 @@ class aadhar_model(models.Model):
     age             =models.CharField(help_text="enter age",max_length=3,default=21)
     phone_number    =models.CharField(help_text="enter phone number",max_length=10,default=" ")
     voter_id        =models.CharField(help_text="Enter the voter id number",max_length=10,default='',blank=True)
+    image           =models.ImageField(help_text="Upload the picture",upload_to='media/',default='')
 
 
     def __str__(self):

@@ -7,6 +7,7 @@ class aadhar_modelSerializer(serializers.Serializer):
     age=serializers.CharField(help_text="enter age",max_length=3,default='')
     phone_number=serializers.CharField(help_text="enter phone number",max_length=10,default=" ")
     voter_id=serializers.CharField(help_text="Enter the voter id number",max_length=10,default='')
+    image=serializers.ImageField(help_text="Upload the picture",default='')
 
     def create(self, validated_data):
         """
