@@ -31,6 +31,13 @@ def homepage(request,number):
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
 
 
+
+
+def getstatus(request):
+    aadharobj=aadhar_model.objects.all()
+    return JsonResponse({'total':len(aadharobj),'aadhar_number':[aadhar.aadhar_number if aadhar.aadhar_number !="" else aadhar.voter_id for aadhar in aadharobj]},safe=False)
+
+
 #extract data from pdf
     
 from pdfminer.high_level import extract_pages
